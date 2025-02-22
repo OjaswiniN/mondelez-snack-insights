@@ -1,0 +1,16 @@
+version: '2'
+services:
+  db:
+    image: postgres:12-alpine
+    container_name: mondelez_insights
+    networks:
+      - local_net
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: mondelez_insights
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+networks:
+  local_net:
+    driver: bridge
