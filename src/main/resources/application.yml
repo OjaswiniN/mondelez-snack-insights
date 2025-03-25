@@ -1,0 +1,44 @@
+server:
+  use-forward-headers: true
+#LOGGING MODE
+logging:
+  level:
+    org:
+      hibernate: INFO
+      #springframework: DEBUG
+      springframework:
+        security: INFO
+        web: INFO
+
+#DATASOURCE
+spring:
+  flyway:
+    enabled: true
+    sql-migration-prefix: V
+    sql-migration-separator: __
+    sql-migration-suffixes: .sql
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    host: localhost
+    database: mondelez_insights
+    username: postgres
+    password: postgres
+    url: jdbc:postgresql://localhost:5432/mondelez_insights
+    platform: postgres
+    initialization-mode: always
+    continue-on-error: false
+#ALLOWED HEADERS
+  headers:
+    access-control-allow-origin: http://localhost:4200
+#JWT
+app:
+  auth:
+    tokenIssuer: MondelezInsights.token
+    tokenExpirationMS: 604800000
+    tokenSecret: AyStHh7QIp5S2duH7VecbEfRm
+#SWAGGER
+springdoc:
+  api-docs:
+    path: /swagger
+  swagger-ui:
+    path: /swagger.html
